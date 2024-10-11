@@ -5,9 +5,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <!-- Text hints -->
-    <string name="datepickerHint">Día de la trabajo</string>
-    <string name="timepickerHint">Hora de la entrada</string>
+    <!-- Recoger datos -->
+    <string name="datepicker">Día de la trabajo</string>
+    <string name="horaEntrada">Hora de la entrada</string>
+    <string name="horaSalida">Hora de la salida</string>
 
 
 </resources>

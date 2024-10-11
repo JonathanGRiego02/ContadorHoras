@@ -1,32 +1,34 @@
 package com.proyecto.contadorhoras.Activities
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.proyecto.contadorhoras.Dia
 import com.proyecto.contadorhoras.R
 import com.proyecto.contadorhoras.models.TimePickerFragment
+import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
-import android.app.TimePickerDialog
-import android.content.Context
-import android.widget.TimePicker
-import androidx.fragment.app.DialogFragment
-
 
 
 class RecogerDatosActivity : AppCompatActivity() {
     // modelo
         // Fecha
-    lateinit var fecha_taker: EditText
+    lateinit var fecha_taker: Button
     private val calendar = Calendar.getInstance()
     lateinit var fechaTextView: TextView
         // Hora
-    lateinit var time_taker : EditText
-    lateinit var horaTextView : TextView
+    private lateinit var entradaTimePicker : Button
+    lateinit var horaentradaTexView : TextView
+
+    private lateinit var salidaTimePicker : Button
+    lateinit var horasalidaTextView : TextView
 
     // Objeto donde almacenaremos todo
     lateinit var dia_trabajo : Dia
@@ -39,7 +41,7 @@ class RecogerDatosActivity : AppCompatActivity() {
         dia_trabajo = Dia()
 
         // Recogedor de la fecha
-        fecha_taker = findViewById<EditText>(R.id.DatePicker)
+        fecha_taker = findViewById<Button>(R.id.DatePicker)
         fechaTextView = findViewById<TextView>(R.id.fechaTV)
 
         fecha_taker.setOnClickListener {
@@ -47,11 +49,17 @@ class RecogerDatosActivity : AppCompatActivity() {
         }
 
         // Recogedor de la hora
-        time_taker = findViewById<EditText>(R.id.TimePicker)
-        horaTextView = findViewById<TextView>(R.id.horaTV)
+        entradaTimePicker = findViewById<Button>(R.id.entradaTimePicker)
+        horaentradaTexView = findViewById<TextView>(R.id.horaentradaTV)
 
-        time_taker.setOnClickListener {showTimePickerDialog()}
+        salidaTimePicker = findViewById<Button>(R.id.salidaTimePicker)
+        horasalidaTextView = findViewById<TextView>(R.id.horasalidaTV)
+
+        entradaTimePicker.setOnClickListener {showTimePickerDialogEntrada()}
+        salidaTimePicker.setOnClickListener{showTimePickerDialogSalida()}
     }
+
+
 
     // Calendario para recoger la fecha
     private fun showDatePicker() {
@@ -83,14 +91,53 @@ class RecogerDatosActivity : AppCompatActivity() {
     }
 
     // Reloj para recoger la hora
-    private fun showTimePickerDialog() {
-        val timePicker = TimePickerFragment{onTimeSelected(it)}
+    private fun showTimePickerDialogEntrada() {
+        val timePicker = TimePickerFragment{onTimeEntradaSelected(it)}
         timePicker.show(supportFragmentManager, "time")
 
     }
 
-    private fun onTimeSelected(time:String) {
-        horaTextView.text = time
+    private fun onTimeEntradaSelected(time:String) {
+        horaentradaTexView.text = time
         dia_trabajo.horaEntrada = time
+    }
+
+    private fun showTimePickerDialogSalida() {
+        val timePicker = TimePickerFragment{onTimeSalidaSelected(it)}
+        timePicker.show(supportFragmentManager, "time")
+    }
+
+    private fun onTimeSalidaSelected(time: String) {
+
+        dia_trabajo.horaSalida = time
+        // Formato de las horas
+        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+
+        try {
+            // Convertir las horas de entrada y salida a Date
+            val horaEntrada: Date? = dateFormat.parse(dia_trabajo.horaEntrada)
+            val horaSalida: Date? = dateFormat.parse(dia_trabajo.horaSalida)
+
+            // Comparar las horas
+            if (horaEntrada != null && horaSalida != null && horaSalida.before(horaEntrada)) {
+                // Mostrar advertencia si la hora de salida es anterior a la de entrada
+                mostrarAdvertenciaHoraIncorrecta()
+            } else {
+                horasalidaTextView.text = time
+            }
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+    }
+
+    // Función para mostrar una advertencia
+    private fun mostrarAdvertenciaHoraIncorrecta() {
+        // Puedes usar un Toast o un AlertDialog para mostrar el warning
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Advertencia")
+        builder.setMessage("La hora de salida no puede ser anterior a la hora de entrada.")
+        builder.setPositiveButton("Aceptar", null)
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 }

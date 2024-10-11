@@ -45,7 +45,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:ems="10"
-        android:inputType="text"
         android:text="@string/horaEntrada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +66,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:ems="10"
-        android:inputType="text"
         android:text="@string/horaSalida"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,16 +82,38 @@
         app:layout_constraintTop_toBottomOf="@+id/salidaTimePicker" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/horasextSeekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="55dp"
+        android:max="5"
+        android:progress="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horasalidaTV" />
+
+    <TextView
+        android:id="@+id/horasExtrasTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="32dp"
-        android:progress="1"
-        android:max="10"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="17dp"
+        android:text="0"
         app:layout_constraintStart_toStartOf="@+id/horasalidaTV"
-        app:layout_constraintTop_toBottomOf="@+id/horasalidaTV"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/horasextSeekBar" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/botonEnviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horasExtrasTV" />
+
 
     <!-- Hora -->
 

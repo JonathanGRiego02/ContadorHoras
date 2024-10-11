@@ -6,6 +6,7 @@ import android.icu.util.Calendar
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.proyecto.contadorhoras.Dia
@@ -20,18 +21,22 @@ import java.util.Locale
 class RecogerDatosActivity : AppCompatActivity() {
     // modelo
         // Fecha
-    lateinit var fecha_taker: Button
+    private lateinit var fecha_taker: Button
     private val calendar = Calendar.getInstance()
-    lateinit var fechaTextView: TextView
+    private lateinit var fechaTextView: TextView
         // Hora
     private lateinit var entradaTimePicker : Button
-    lateinit var horaentradaTexView : TextView
+    private lateinit var horaentradaTexView : TextView
 
     private lateinit var salidaTimePicker : Button
-    lateinit var horasalidaTextView : TextView
+    private lateinit var horasalidaTextView : TextView
+
+        // Horas extra
+    private lateinit var hextraSeekBar : SeekBar
+    private lateinit var hextraTextView : TextView
 
     // Objeto donde almacenaremos todo
-    lateinit var dia_trabajo : Dia
+    private lateinit var dia_trabajo : Dia
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +49,8 @@ class RecogerDatosActivity : AppCompatActivity() {
         fecha_taker = findViewById<Button>(R.id.DatePicker)
         fechaTextView = findViewById<TextView>(R.id.fechaTV)
 
-        fecha_taker.setOnClickListener {
-            showDatePicker()
-        }
+            // Listeners
+        fecha_taker.setOnClickListener {showDatePicker()}
 
         // Recogedor de la hora
         entradaTimePicker = findViewById<Button>(R.id.entradaTimePicker)
@@ -55,8 +59,23 @@ class RecogerDatosActivity : AppCompatActivity() {
         salidaTimePicker = findViewById<Button>(R.id.salidaTimePicker)
         horasalidaTextView = findViewById<TextView>(R.id.horasalidaTV)
 
+            // Listeners
         entradaTimePicker.setOnClickListener {showTimePickerDialogEntrada()}
         salidaTimePicker.setOnClickListener{showTimePickerDialogSalida()}
+
+        // Recoger horas extra
+        hextraSeekBar = findViewById<SeekBar>(R.id.horasextSeekBar)
+        hextraTextView = findViewById<TextView>(R.id.horasExtrasTV)
+
+        hextraSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                updateSeekBarValue(seekBar, progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+        })
+
     }
 
 
@@ -139,5 +158,11 @@ class RecogerDatosActivity : AppCompatActivity() {
         builder.setPositiveButton("Aceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
+    }
+
+    // Horas Extra
+    private fun updateSeekBarValue(seekBar: SeekBar?, progress: Int) {
+        // Actualizar el valor mostrado en el TextView
+        hextraTextView.text = progress.toString()
     }
 }

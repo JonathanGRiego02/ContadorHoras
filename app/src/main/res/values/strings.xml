@@ -9,6 +9,7 @@
     <string name="datepicker">Día de la trabajo</string>
     <string name="horaEntrada">Hora de la entrada</string>
     <string name="horaSalida">Hora de la salida</string>
+    <string name="botonEnviar">Enviar</string>
 
 
 </resources>

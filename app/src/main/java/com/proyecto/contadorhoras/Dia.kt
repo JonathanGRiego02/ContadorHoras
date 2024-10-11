@@ -1,11 +1,12 @@
 package com.proyecto.contadorhoras
 
 data class Dia(
-    val dia: String,
-    val mes: String,
-    val anyo: String,
-    val horasExtra: Int,
-    val horasTotales: Int,
-    val horaEntrada: String,
-    val horaSalida: String
+    var diaMes: Int = 0,
+    var diaSemana: Int = 0,
+    var mes: Int = 0,
+    var anyo: Int = 0,
+    var horasExtra: Int = 0,
+    var horasTotales: Int = 0,
+    var horaEntrada: String = "",
+    var horaSalida: String = ""
 )

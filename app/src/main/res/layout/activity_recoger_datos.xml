@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.RecogerDatosActivity"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="58dp">
+
+    <!-- Fecha -->
+    <EditText
+        android:id="@+id/DatePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="222dp"
+        android:layout_marginBottom="662dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:hint="@string/datepickerHint"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <TextView
+        android:id="@+id/fechaTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:text="fecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DatePicker" />
+
+    <EditText
+        android:id="@+id/TimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="@string/timepickerHint"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fechaTV" />
+
+    <TextView
+        android:id="@+id/horaTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="hora"
+        app:layout_constraintEnd_toEndOf="@+id/TimePicker"
+        app:layout_constraintStart_toStartOf="@+id/TimePicker"
+        app:layout_constraintTop_toBottomOf="@+id/TimePicker" />
+
+    <!-- Hora -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,13 @@
     <string name="previous">Previous</string>
     <!-- Recoger datos -->
     <string name="datepicker">Día de la trabajo</string>
-    <string name="horaEntrada">Hora de la entrada</string>
-    <string name="horaSalida">Hora de la salida</string>
-    <string name="botonEnviar">Enviar</string>
+    <string name="horaEntradaButton">Hora de la entrada</string>
+    <string name="horaSalidaButton">Hora de la salida</string>
+    <string name="DateTakerButton">Selecciona un día</string>
+    <string name="botonConfirmar">Confirmar</string>
+    <string name="TituloIntroDatos">INTRODUCCIÓN DE DATOS</string>
+    <string name="TituloDiaTrabajo">• Dia de trabajo:</string>
+    <string name="horas_extra">• Horas extra:</string>
 
 
 </resources>

@@ -26,10 +26,8 @@ class RecogerDatosActivity : AppCompatActivity() {
     private lateinit var fechaTextView: TextView
         // Hora
     private lateinit var entradaTimePicker : Button
-    private lateinit var horaentradaTexView : TextView
 
     private lateinit var salidaTimePicker : Button
-    private lateinit var horasalidaTextView : TextView
 
         // Horas extra
     private lateinit var hextraSeekBar : SeekBar
@@ -47,17 +45,14 @@ class RecogerDatosActivity : AppCompatActivity() {
 
         // Recogedor de la fecha
         fecha_taker = findViewById<Button>(R.id.DatePicker)
-        fechaTextView = findViewById<TextView>(R.id.fechaTV)
 
             // Listeners
         fecha_taker.setOnClickListener {showDatePicker()}
 
         // Recogedor de la hora
         entradaTimePicker = findViewById<Button>(R.id.entradaTimePicker)
-        horaentradaTexView = findViewById<TextView>(R.id.horaentradaTV)
 
         salidaTimePicker = findViewById<Button>(R.id.salidaTimePicker)
-        horasalidaTextView = findViewById<TextView>(R.id.horasalidaTV)
 
             // Listeners
         entradaTimePicker.setOnClickListener {showTimePickerDialogEntrada()}
@@ -91,7 +86,7 @@ class RecogerDatosActivity : AppCompatActivity() {
                 // Formatear la fecha seleccionada
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val formattedDate = dateFormat.format(selectedDate.time)
-                fechaTextView.text = formattedDate
+                fecha_taker.text = formattedDate
 
                 // Obtener el día de la semana
                 val dayOfWeek = selectedDate.get(Calendar.DAY_OF_WEEK)
@@ -117,7 +112,7 @@ class RecogerDatosActivity : AppCompatActivity() {
     }
 
     private fun onTimeEntradaSelected(time:String) {
-        horaentradaTexView.text = time
+         entradaTimePicker.text = time
         dia_trabajo.horaEntrada = time
     }
 
@@ -142,7 +137,7 @@ class RecogerDatosActivity : AppCompatActivity() {
                 // Mostrar advertencia si la hora de salida es anterior a la de entrada
                 mostrarAdvertenciaHoraIncorrecta()
             } else {
-                horasalidaTextView.text = time
+                salidaTimePicker.text = time
             }
         } catch (e: ParseException) {
             e.printStackTrace()

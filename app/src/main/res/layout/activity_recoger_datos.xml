@@ -10,112 +10,125 @@
     tools:layout_editor_absoluteY="58dp">
 
     <!-- Fecha -->
+    <!-- Título de introducción de datos -->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TituloIntroDatos"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Título y Botón para seleccionar el día -->
+    <TextView
+        android:id="@+id/TituloDateTaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TituloDiaTrabajo"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp" />
+
+    <!-- Título y Botón para la hora de entrada -->
+
     <Button
         android:id="@+id/DatePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="222dp"
-        android:layout_marginBottom="662dp"
-        android:clickable="false"
-        android:focusable="false"
-        android:padding="16dp"
-        android:text="@string/datepicker"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/DateTakerButton"
+        app:layout_constraintStart_toEndOf="@id/TituloDateTaker"
+        app:layout_constraintTop_toTopOf="@id/TituloDateTaker" />
 
     <TextView
-        android:id="@+id/fechaTV"
+        android:id="@+id/TituloHoraEntrada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:text="fecha"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/horaEntradaButton"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DatePicker" />
+        app:layout_constraintTop_toBottomOf="@id/TituloDateTaker"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp" />
 
     <Button
         android:id="@+id/entradaTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:ems="10"
-        android:text="@string/horaEntrada"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fechaTV" />
+        android:text="@string/horaEntradaButton"
+        app:layout_constraintStart_toEndOf="@id/TituloHoraEntrada"
+        app:layout_constraintTop_toTopOf="@id/TituloHoraEntrada"
+        android:layout_marginStart="16dp" />
 
+
+    <!-- Título y SeekBar para horas extras -->
     <TextView
-        android:id="@+id/horaentradaTV"
+        android:id="@+id/TituloHoraSalida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="hora entrada"
-        app:layout_constraintEnd_toEndOf="@+id/entradaTimePicker"
-        app:layout_constraintStart_toStartOf="@+id/entradaTimePicker"
-        app:layout_constraintTop_toBottomOf="@+id/entradaTimePicker" />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/horaSalidaButton"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TituloHoraEntrada" />
 
     <Button
         android:id="@+id/salidaTimePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
-        android:ems="10"
-        android:text="@string/horaSalida"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horaentradaTV" />
+        android:layout_marginStart="28dp"
+        android:text="@string/horaSalidaButton"
+        app:layout_constraintStart_toEndOf="@id/TituloHoraSalida"
+        app:layout_constraintTop_toTopOf="@id/TituloHoraSalida" />
 
     <TextView
-        android:id="@+id/horasalidaTV"
+        android:id="@+id/TituloHorasExtra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:text="hora salida"
-        app:layout_constraintEnd_toEndOf="@+id/salidaTimePicker"
-        app:layout_constraintStart_toStartOf="@+id/salidaTimePicker"
-        app:layout_constraintTop_toBottomOf="@+id/salidaTimePicker" />
+        android:text="@string/horas_extra"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TituloHoraSalida"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp" />
 
     <SeekBar
         android:id="@+id/horasextSeekBar"
-        android:layout_width="0dp"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="55dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:max="5"
         android:progress="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horasalidaTV" />
+        app:layout_constraintStart_toEndOf="@id/TituloHorasExtra"
+        app:layout_constraintTop_toTopOf="@id/TituloHorasExtra" />
 
     <TextView
         android:id="@+id/horasExtrasTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="17dp"
         android:text="0"
-        app:layout_constraintStart_toStartOf="@+id/horasalidaTV"
-        app:layout_constraintTop_toBottomOf="@+id/horasextSeekBar" />
+        app:layout_constraintStart_toEndOf="@id/horasextSeekBar"
+        app:layout_constraintTop_toTopOf="@id/horasextSeekBar"
+        android:layout_marginStart="8dp"/>
 
+    <!-- Botón confirmar -->
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/botonEnviar"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/botonConfirmar"
+        app:layout_constraintTop_toBottomOf="@id/horasextSeekBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horasExtrasTV" />
-
-
-    <!-- Hora -->
-
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
